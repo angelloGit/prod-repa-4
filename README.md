@@ -214,6 +214,7 @@ done
 ````
 cd ~/work
 mkdir DZ4
+cd !:1
 git init
 remote add DEPLOY ssh://god@taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git
 mcedit index.php
@@ -235,7 +236,8 @@ angello@angello:~/work/DZ4$
 теперь проверим под noob, предварительно скопировав свои ключи на сервер. на локальной машиине
 ````
 cd ~/work
-mkdir DZ4-noob
+mkdir DZ4-noob 
+cd !:1
 git init
 git remote add DEPLOY ssh://noob@taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git
 touch index.php
