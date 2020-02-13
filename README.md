@@ -108,7 +108,7 @@ authorized_keys  authorized_keys.god  authorized_keys.noob  authorized_keys.pro 
 root@sandbox:/home/teamcity/.ssh#.
 ````
  делаем попытку зайти 
-````
+````console
 angello@angello:~$ ssh god@elm.dp.ua -p 60022
 Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-76-generic x86_64)
 
