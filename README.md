@@ -232,6 +232,45 @@ To ssh://taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git
    c862804..fa9ac0e  master -> master
 angello@angello:~/work/DZ4$ 
 ````
+теперь проверим под noob, предварительно скопировав свои ключи на сервер. на локальной машиине
+````
+cd ~/work
+mkdir DZ4-noob
+git init
+git remote add DEPLOY ssh://noob@taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git
+touch index.php
+mcedit index.php
+git add index.php && git commit -m 'init by noob'
+git push -f DEPLOY master
+````
+````console
+angello@angello:~/work/DZ4-noob$ git push -f DEPLOY master
+Підрахунок об’єктів: 3, виконано.
+Запис об’єктів: 100% (3/3), 241 bytes | 241.00 KiB/s, виконано.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: only god and pro can commit here
+remote: error: hook declined to update refs/heads/master
+To ssh://taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git
+ ! [remote rejected] master -> master (hook declined)
+error: не вдалося надіслати деякі посилання в «ssh://noob@taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git»
+angello@angello:~/work/DZ4-noob$ 
+````
+ чтобы больше так не обламываться 
+````
+git push -u -f DEPLOY master:dev
+````
+````console
+angello@angello:~/work/DZ4-noob$ git push -u -f DEPLOY master:dev
+Підрахунок об’єктів: 3, виконано.
+Запис об’єктів: 100% (3/3), 241 bytes | 241.00 KiB/s, виконано.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: got update 113c0119ed30885e0efcb24f5170b4c67a236986 for refs/heads/dev, deploying
+remote: Switched to branch 'dev'
+To ssh://taska4.echo.dp.ua:60022/home/teamcity/taska4.echo.dp.ua.git
+ + 51a2154...113c011 master -> dev (forced update)
+Гілка «master» відслідковує зовнішню гілку «dev» з «DEPLOY».
+angello@angello:~/work/DZ4-noob$ 
+````
 
 
 
