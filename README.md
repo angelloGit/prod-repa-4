@@ -49,10 +49,10 @@ sysremctl reload ssh.service
 ````
  готово. теперь удобный интерфейс для управления ключами. Тоесть еще одна репа. Далее юзером team
  ````
-cd ~.
+cd ~
 
 mkdir RBAC
-cd RBAC
+cd !:1
 git init --bare RBAC.git
 cat > RBAC.git/hooks/post-receive <<__EOFF
 #!/bin/sh
@@ -83,6 +83,7 @@ __EOFF
 ````
 cd ~/work
 mkdir RBAC
+cd !:1
 git init
 git remote add RBAC ssh://team@taska4.echo.dp.ua:60022/home/teamcity/RBAC/RBAC.git
 ````
@@ -191,7 +192,7 @@ while read oldrev newrev ref
 do
     case \$ref in.
         refs/heads/master)
-        [ -d /var/www/\$SITE/$newrev ] && echo "dir /var/www/\$SITE/\$newrev exists, cant deploy, exiting" && exit 1 || mkdir -p /var/www/\$SITE/$newrev
+        [ -d /var/www/\$SITE/\$newrev ] && echo "dir /var/www/\$SITE/\$newrev exists, cant deploy, exiting" && exit 1 || mkdir -p /var/www/\$SITE/\$newrev
             echo "got update for master \$newrev for \$ref, deploying"
             \$GIT --work-tree=\$WWW_DIR/\$SITE/\$newrev checkout --force master
             rm $WWW_DIR/www
