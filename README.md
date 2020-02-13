@@ -38,11 +38,11 @@ chmod a+rx /home/teamcity/git-shell-commands/*
 cat > /etc/ssh/ssh/sshd_config <<__EOFF
 
 Match User god
-    AuthorizedKeysFile<>.ssh/authorized_keys.god
+    AuthorizedKeysFile  .ssh/authorized_keys.god
 Match User pro
-    AuthorizedKeysFile<>.ssh/authorized_keys.pro
+    AuthorizedKeysFile  .ssh/authorized_keys.pro
 Match User noob
-    AuthorizedKeysFile<>.ssh/authorized_keys.noob
+    AuthorizedKeysFile  .ssh/authorized_keys.noob
 __EOFF
 
 sysremctl reload ssh.service
